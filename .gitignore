@@ -1,0 +1,59 @@
+### Project ###
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+.kotlin/
+
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### Idea ###
+.idea/uiDesigner.xml
+
+.idea/modules.xml
+.idea/detekt.xml
+.idea/misc.xml
+
+# 共享的运行配置应当放置于 <root>/.run/
+.idea/runConfigurations/
+
+*.iws
+*.iml
+*.ipr
+
+# 默认忽略的文件
+.idea/shelf/
+.idea/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+.idea/httpRequests/
+# Datasource local storage ignored files
+.idea/dataSources/
+.idea/dataSources.local.xml
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store

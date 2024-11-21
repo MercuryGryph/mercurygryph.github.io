@@ -1,0 +1,4 @@
+<resources>
+    <string name="title">MercuryGryph</string>
+    <string name="hello">Hello, Kotlin WASM!</string>
+</resources>
