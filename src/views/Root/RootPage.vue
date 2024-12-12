@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BioCard from '@/views/Root/components/BioCard.vue'
 import { Urls } from '@/datas/Constants.ts'
+import Copyright from '@/views/Root/components/Copyright.vue'
 
 document.title = 'MercuryGryph / 9猫猫'
 document.querySelector('link[rel="icon"]').href = Urls.Images.Avatar
@@ -21,8 +22,10 @@ const backgroundImgStyle =
     />
   </transition>
 
-  <div class="fixed left-0 top-0 w-full h-100vh of-x-hidden of-y-scroll scroll-smooth">
+  <div class="fixed left-0 top-0 w-full h-100vh of-x-hidden of-y-auto scroll-smooth">
     <BioCard class="w-50% mx-a mt-32" />
+
+    <Copyright class="w-100vw absolute bottom-0" />
   </div>
 </template>
 

@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BlurCard: typeof import('./src/components/BlurCard.vue')['default']
     ElImage: typeof import('element-plus/es')['ElImage']
+    ElLink: typeof import('element-plus/es')['ElLink']
     ElText: typeof import('element-plus/es')['ElText']
     IconLink: typeof import('./src/components/IconLink.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

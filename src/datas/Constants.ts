@@ -14,4 +14,8 @@ export const Urls = {
     ComposeMultiplatform: 'https://www.jetbrains.com/compose-multiplatform/',
     VueJs: 'https://vuejs.org/',
   },
+  Project: {
+    Repo: 'https://github.com/MercuryGryph/mercurygryph.github.io',
+    License: 'https://github.com/MercuryGryph/mercurygryph.github.io/blob/main/LICENSE.txt',
+  }
 }
