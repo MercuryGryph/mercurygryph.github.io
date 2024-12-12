@@ -2,11 +2,10 @@
 import { Urls } from '@/datas/Constants.ts'
 import { LogoBilibili, LogoCompose, LogoGithub, LogoKotlin, LogoSteam, LogoVueJs, LogoX } from '@/assets/icons'
 import { BlurCard, IconLink } from '@/components'
-
 </script>
 
 <template>
-  <BlurCard class="max-w-128 p-8">
+  <BlurCard class="max-w-128 min-w-350px p-8">
     <div class="w-fit h-0 mx-a relative">
       <el-image
         :src="Urls.Images.Avatar"
@@ -83,7 +82,4 @@ import { BlurCard, IconLink } from '@/components'
 </template>
 
 <style scoped>
-.blur-card-title {
-  font-family: 'JetBrains Mono', monospace !important;
-}
 </style>
