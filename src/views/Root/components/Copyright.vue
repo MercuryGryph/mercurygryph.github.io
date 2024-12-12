@@ -3,7 +3,7 @@ import { Urls } from '@/datas/Constants.ts'
 </script>
 
 <template>
-  <div class="backdrop-blur-2xl! b-solid b-0 b-t-1px b-[#414243] p-8px">
+  <div class="backdrop-blur-2xl! p-8px">
     <el-text type="info">
       &copy; MercuryGryph🏳️‍⚧
       <br/>

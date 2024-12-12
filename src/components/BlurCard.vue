@@ -39,7 +39,8 @@ const titleStyle = computed(() => {
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   overflow: visible;
-  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(40px);
+  backdrop-filter: blur(40px);
 }
 .blur-card-title-container {
   position: absolute;

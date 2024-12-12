@@ -22,10 +22,12 @@ const backgroundImgStyle =
     />
   </transition>
 
-  <div class="fixed left-0 top-0 w-full h-100vh of-x-hidden of-y-auto scroll-smooth">
-    <BioCard class="w-50% mx-a mt-32" />
+  <div class="fixed left-0 top-0 flex flex-col w-full h-100vh of-x-hidden of-y-auto scroll-smooth">
+    <BioCard class="w-50% mx-a mt-32 cancel" />
 
-    <Copyright class="w-100vw absolute bottom-0" />
+    <div class="h-4 mt-4" />
+
+    <Copyright class="w-100vw mt-a" />
   </div>
 </template>
 
