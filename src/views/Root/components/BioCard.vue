@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { Urls } from '@/datas/Constants.ts'
-import { LogoBilibili, LogoCompose, LogoGithub, LogoKotlin, LogoSteam, LogoVueJs, LogoX } from '@/assets/icons'
 import { BlurCard, IconLink } from '@/components'
+import { LogoBilibili, LogoCompose, LogoGithub, LogoKotlin, LogoSteam, LogoVueJs, LogoX } from '@/assets/icons'
 </script>
 
 <template>
-  <BlurCard class="max-w-128 min-w-350px p-8">
+  <BlurCard class="max-w-128 min-w-300px px-2 py-4">
     <div class="w-fit h-0 mx-a relative">
       <el-image
         :src="Urls.Images.Avatar"
@@ -32,22 +32,15 @@ import { BlurCard, IconLink } from '@/components'
       title-font-family="'JetBrains Mono', monospace"
       class="w-fit mx-a p-8px"
     >
-      <IconLink
-        :href="Urls.Official.Kotlin"
-        class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg"
-      >
+      <IconLink :href="Urls.Official.Kotlin" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
         <LogoKotlin class="w-48px p-12px" />
       </IconLink>
-      <IconLink
-        :href="Urls.Official.ComposeMultiplatform"
-        class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg"
-      >
+
+      <IconLink :href="Urls.Official.ComposeMultiplatform" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
         <LogoCompose class="w-48px p-8px" />
       </IconLink>
-      <IconLink
-        :href="Urls.Official.VueJs"
-        class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg"
-      >
+
+      <IconLink :href="Urls.Official.VueJs" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
         <LogoVueJs class="w-48px h-48px p-8px pt-12px" />
       </IconLink>
     </BlurCard>
