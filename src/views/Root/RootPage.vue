@@ -5,14 +5,19 @@ import { Urls } from '@/datas/Constants.ts'
 document.title = 'MercuryGryph / 9猫猫'
 document.querySelector('link[rel="icon"]').href = Urls.Images.Avatar
 
+const backgroundImgStyle =
+  `background-image: url('${Urls.Images.BingDailyWallpaper}'); ` +
+  'background-size: cover; ' +
+  'background-position: center center;'
+
 </script>
 
 <template>
   <transition appear name="el-fade-in" class="of-hidden">
-    <img
-      :src="Urls.Images.BingDailyWallpaper"
+    <div
+      id="background"
       class="fixed h-100vh w-100vw z--10 of-hidden blur"
-      alt="[background image]"
+      :style="backgroundImgStyle"
     />
   </transition>
 
