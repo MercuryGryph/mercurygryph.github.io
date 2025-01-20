@@ -14,6 +14,5 @@ declare module 'vue' {
     IconLink: typeof import('./src/components/IconLink.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Spacer: typeof import('./src/components/Spacer.vue')['default']
   }
 }

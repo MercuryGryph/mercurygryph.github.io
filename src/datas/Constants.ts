@@ -1,7 +1,7 @@
 export const Urls = {
   Images: {
-    Avatar: 'https://s1.imgrun.cn/2024/12/12/675a3cfa046db.png',
-    BingDailyWallpaper: 'https://bing.img.run/1366x768.php',
+    Avatar: 'https://avatars.githubusercontent.com/u/74131645',
+    BingDailyWallpaper: 'https://dailybing.com/api/v1',
   },
   MySpace: {
     Bilibili: 'https://space.bilibili.com/27604602',
