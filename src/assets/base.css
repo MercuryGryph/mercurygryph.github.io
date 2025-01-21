@@ -27,7 +27,7 @@ a, a:hover, a:active, a:checked {
     text-decoration: none;
 }
 
-html, box {
+html, body {
     margin: 0;
     padding: 0;
 }

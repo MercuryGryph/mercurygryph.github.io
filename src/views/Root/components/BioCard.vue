@@ -32,15 +32,24 @@ import { LogoBilibili, LogoCompose, LogoGithub, LogoKotlin, LogoSteam, LogoVueJs
       title-font-family="'JetBrains Mono', monospace"
       class="w-fit mx-a p-8px"
     >
-      <IconLink :href="Urls.Official.Kotlin" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.Official.Kotlin"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoKotlin class="w-48px p-12px" />
       </IconLink>
 
-      <IconLink :href="Urls.Official.ComposeMultiplatform" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.Official.ComposeMultiplatform"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoCompose class="w-48px p-8px" />
       </IconLink>
 
-      <IconLink :href="Urls.Official.VueJs" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.Official.VueJs"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoVueJs class="w-48px h-48px p-8px pt-12px" />
       </IconLink>
     </BlurCard>
@@ -54,19 +63,31 @@ import { LogoBilibili, LogoCompose, LogoGithub, LogoKotlin, LogoSteam, LogoVueJs
       title-font-family="'JetBrains Mono', monospace"
       class="w-fit mx-a p-8px"
     >
-      <IconLink :href="Urls.MySpace.Github" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.MySpace.Github"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoGithub class="w-32px p-4px" />
       </IconLink>
 
-      <IconLink :href="Urls.MySpace.Bilibili" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.MySpace.Bilibili"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoBilibili class="w-32px p-6px" />
       </IconLink>
 
-      <IconLink :href="Urls.MySpace.X" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.MySpace.X"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoX class="w-32px p-6px" />
       </IconLink>
 
-      <IconLink :href="Urls.MySpace.Steam" class="m-1 inline-block b-solid b-1 b-[#414243] shadow-lg">
+      <IconLink
+        :href="Urls.MySpace.Steam"
+        class="m-1 inline-block b-solid b-1 b-[var(--el-border-color)] shadow-lg"
+      >
         <LogoSteam class="w-32px p-4px" />
       </IconLink>
     </BlurCard>

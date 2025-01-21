@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { defineProps, ref } from 'vue'
+import { defineProps, ref } from 'vue'
 
-  const props = defineProps({
+const props = defineProps({
     href: {type: String, default: ''},
     targetBlank: {type: Boolean, default: true},
     targetSelf: {type: Boolean, default: false},
@@ -31,7 +31,7 @@
     ref="divRef"
     @click="onClick"
     @mouseover="onMouseOver"
-    class="w-fit h-fit rounded-50%"
+    class="w-fit h-fit rounded-50% cursor-pointer"
   >
     <slot />
   </div>

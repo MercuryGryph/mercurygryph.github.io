@@ -4,6 +4,7 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import { createApp } from 'vue'
 
 import 'virtual:uno.css'
+import './assets/googleFontIcons.css'
 
 import App from './App.vue'
 import router from './router'
