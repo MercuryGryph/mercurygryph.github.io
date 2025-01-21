@@ -17,6 +17,11 @@ const isUseGoogleAds: Ref<boolean> = ref(true)
 function removeGoogleAds() {
   document.head.querySelector('script#google_ad')?.remove()
   isUseGoogleAds.value = false
+  while (true) {
+    const ad = document.querySelector('.adContainer')
+    if (ad) ad.remove()
+    else break
+  }
 }
 
 </script>
