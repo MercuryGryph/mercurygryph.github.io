@@ -1,16 +1,17 @@
-import './assets/main.css'
-import 'element-plus/theme-chalk/dark/css-vars.css'
-
-import { createApp } from 'vue'
-
-import 'virtual:uno.css'
-import './assets/googleFontIcons.css'
-
+import ElementPlus from 'element-plus'
+import {createApp} from 'vue'
+import {createRouter, createWebHistory} from 'vue-router'
+import {routes} from 'vue-router/auto-routes'
 import App from './App.vue'
-import router from './router'
+import '~/styles/index.scss'
+import 'uno.css'
+import 'element-plus/theme-chalk/src/message.scss'
+import 'element-plus/theme-chalk/src/message-box.scss'
 
 const app = createApp(App)
-
-app.use(router)
-
+app.use(createRouter({
+    history: createWebHistory(),
+    routes,
+}))
+app.use(ElementPlus)
 app.mount('#app')

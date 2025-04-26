@@ -1,0 +1,7 @@
+@use 'normalize';
+
+html.dark {
+}
+
+html:not(.dark) {
+}
