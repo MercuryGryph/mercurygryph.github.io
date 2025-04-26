@@ -1,4 +1,5 @@
 import ElementPlus from 'element-plus'
+import {createPinia} from 'pinia'
 import {createApp} from 'vue'
 import {createRouter, createWebHistory} from 'vue-router'
 import {routes} from 'vue-router/auto-routes'
@@ -13,5 +14,6 @@ app.use(createRouter({
     history: createWebHistory(),
     routes,
 }))
+app.use(createPinia())
 app.use(ElementPlus)
 app.mount('#app')

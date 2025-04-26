@@ -10,6 +10,6 @@ export default antfu({
         'vue/html-indent': ['error', 4, {switchCase: 1}],
         'no-console': 'off',
         'style/object-curly-spacing': 'off',
-        'vue/block-tag-newline': 'off'
+        'vue/block-tag-newline': 'off',
     },
 })
