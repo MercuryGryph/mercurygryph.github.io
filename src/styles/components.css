@@ -14,11 +14,20 @@
     initial-value: pink;
 }
 
-.GlassCard {
-    --glass-card-border-width: 2px;
-    --glass-card-effect-size: 256px;
+html {
+    --glass-card-effect-size     : 256px;
+    --glass-card-border-width    : 2px;
 
-    --glass-card-effect-pos-x: 0;
-    --glass-card-effect-pos-y: 0;
+    --glass-card-effect-pos-x    : 0;
+    --glass-card-effect-pos-y    : 0;
+}
+
+.GlassCard {
+    --glass-card-border-vertival : var(--glass-card-border-width);
+    --glass-card-border-horizonal: var(--glass-card-border-width);
+    --glass-card-border-top      : var(--glass-card-border-vertival);
+    --glass-card-border-bottom   : var(--glass-card-border-vertival);
+    --glass-card-border-left     : var(--glass-card-border-horizonal);
+    --glass-card-border-right    : var(--glass-card-border-horizonal);
 }
 /*endregion*/
