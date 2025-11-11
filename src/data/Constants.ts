@@ -1,3 +1,5 @@
+import {rand} from '@vueuse/core'
+
 export const Urls = {
     Images: {
         Avatar: 'https://avatars.githubusercontent.com/u/74131645',
@@ -20,11 +22,17 @@ export const Urls = {
     },
 }
 
-export const StyleProperty = {
-    Mouse: {
-        Pos: {
-            X: '--mousePosX',
-            Y: '--mousePosY'
-        }
+class Probability {
+    constructor(
+        public threshold: number,
+        public range: number = 100,
+    ) {}
+
+    public try = ():boolean => {
+        return rand(0, this.range) < this.threshold
     }
+}
+
+export const Probabilities = {
+    AvatarRotating: new Probability(5, 100)
 }

@@ -4,7 +4,7 @@ import {Urls} from '~/data/Constants'
 
 <template>
 
-    <BlurCard class="fixed bottom-0 w-full flex justify-between bg-#3338 p-2">
+    <GlassCard class="fixed bottom-0 w-full flex justify-between p-2">
         <el-text type="info">
             © MercuryGryph🏳️‍⚧
             <br>
@@ -21,10 +21,6 @@ import {Urls} from '~/data/Constants'
                 [Bing]
             </el-link>
         </el-text>
-    </BlurCard>
+    </GlassCard>
 
 </template>
-
-<style scoped>
-
-</style>

@@ -1,24 +1,5 @@
-<script setup lang="ts">
-import {ref, onMounted} from 'vue'
-
-const card = ref<HTMLDivElement | null>(null)
-
-onMounted(() => {
-    card.value
-})
-
-</script>
-
 <template>
-    <div ref="card" class="blurCard shadow-xl backdrop-blur-2xl">
+    <div class="BlurCard shadow-xl bg-#3333 backdrop-blur-lg">
         <slot />
     </div>
 </template>
-
-<style>
-.blurCard::before {
-    content: '';
-    position: absolute;
-
-}
-</style>
