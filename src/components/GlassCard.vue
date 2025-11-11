@@ -49,9 +49,9 @@ onMounted(() => {
         const y = e.clientY - rect.top - props.lightSizePx / 2
         const pos = props.offset(x, y, e, rect)
 
-        cardEffect.style.setProperty('--x', `${pos.x}px`)
-        cardEffect.style.setProperty('--y', `${pos.y}px`)
-        cardEffect.style.setProperty('--glass-card-size', `${props.lightSizePx}px`)
+        cardEffect.style.setProperty('--glass-card-effect-pos-x', `${pos.x}px`)
+        cardEffect.style.setProperty('--glass-card-effect-pos-y', `${pos.y}px`)
+        cardEffect.style.setProperty('--glass-card-effect-size' , `${props.lightSizePx}px`)
         cardEffect.style.setProperty('--glass-card-border-width', `${props.glassBorderWidthPx}px`)
     })
 })
@@ -92,8 +92,8 @@ onUnmounted(() => {
     padding: var(--glass-card-border-width);
 
     background-image: radial-gradient(white, var(--glass-card-color) 20%, transparent 60%);
-    background-position: var(--x) var(--y);
-    background-size: var(--glass-card-size) var(--glass-card-size);
+    background-position: var(--glass-card-effect-pos-x) var(--glass-card-effect-pos-y);
+    background-size: var(--glass-card-effect-size) var(--glass-card-effect-size);
     background-repeat: no-repeat;
 
     mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
@@ -110,8 +110,8 @@ onUnmounted(() => {
     inset: 0;
 
     background-image: radial-gradient(var(--glass-card-color) 5%, transparent 50%);
-    background-position: var(--x) var(--y);
-    background-size: var(--glass-card-size) var(--glass-card-size);
+    background-position: var(--glass-card-effect-pos-x) var(--glass-card-effect-pos-y);
+    background-size: var(--glass-card-effect-size) var(--glass-card-effect-size);
     background-repeat: no-repeat;
 
     opacity: 0.6;

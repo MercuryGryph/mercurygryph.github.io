@@ -1,0 +1,24 @@
+
+/*region BlurCard*/
+@property --blur-card-background-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #3333;
+}
+/*endregion*/
+
+/*region GlassCard*/
+@property --glass-card-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: pink;
+}
+
+.GlassCard {
+    --glass-card-border-width: 2px;
+    --glass-card-effect-size: 256px;
+
+    --glass-card-effect-pos-x: 0;
+    --glass-card-effect-pos-y: 0;
+}
+/*endregion*/
