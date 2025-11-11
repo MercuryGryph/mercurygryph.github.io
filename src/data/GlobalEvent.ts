@@ -20,4 +20,10 @@ const GlobalMouseEvent = {
     }
 }
 
+document.onmousemove = (e: MouseEvent): void => {
+    GlobalMouseEvent.OnMouseMove.all().forEach((handler) => {
+        handler(e)
+    })
+}
+
 export { GlobalMouseEvent }
