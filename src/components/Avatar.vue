@@ -34,7 +34,7 @@ import {Urls} from '~/data/Constants'
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: conic-gradient(from var(--angle), aqua, aqua, pink, white, pink, aqua, aqua, pink, white, pink, aqua);
+    background-image: conic-gradient(from var(--angle), aqua 36deg, pink, white, pink, aqua, aqua, pink, white, pink, aqua);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

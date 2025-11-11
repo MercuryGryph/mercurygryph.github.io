@@ -42,10 +42,10 @@ onMounted(() => {
                     style="--glass-card-color: aqua"
                     :glassBorderWidthPx="4"
                     :offset="OffsetZ(2)"
-                    class="relative rounded-full mx-a mt-48 p-4px absolute! bottom-0 w-32"
+                    class="relative rounded-full mx-a mt-48 p-4px absolute! bottom-0 w-32 h-32"
                 >
                     <div ref="avatar" >
-                            <Avatar />
+                        <Avatar />
                     </div>
                 </GlassCard>
             </div>
