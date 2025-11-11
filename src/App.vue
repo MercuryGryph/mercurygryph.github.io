@@ -10,5 +10,5 @@ document.onmousemove = (e: MouseEvent): void => {
 </script>
 
 <template>
-    <RouterView class="h-full max-w-100vw w-full of-x-clip" />
+    <RouterView class="relative h-full max-w-100vw w-full of-x-clip" />
 </template>
