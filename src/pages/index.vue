@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import {onMounted, ref} from 'vue'
 import BottomBar from '~/components/BottomBar.vue'
-import {Urls} from '~/data/Constants'
+import {Probabilities, Urls} from '~/data/Constants'
 import {getDomIconElement} from '~/utils/utils'
-import Avatar from "~/components/Avatar.vue";
 
 const props = defineProps<{
     class?: string
@@ -12,7 +12,16 @@ const props = defineProps<{
 document.title = '9猫猫 / MercuryGryph'
 getDomIconElement().href = Urls.Images.Avatar
 
-let x = document.body.style.getPropertyValue('--mousePosX')
+const avatar = ref<HTMLElement | null>(null)
+
+onMounted(() => {
+    console.debug('onMounted @ index.vue')
+
+    if (Probabilities.AvatarRotating.try() || true) {
+        console.info('roooooooootatinnnnnnnnng')
+        avatar.value?.classList.add('rotating')
+    }
+})
 
 </script>
 
@@ -22,21 +31,46 @@ let x = document.body.style.getPropertyValue('--mousePosX')
     <BottomBar class="z-10" />
 
     <div :class="props.class" :style="props.style">
-        <BlurCard class="relative mx-a mt-48 min-h-64 min-w-64 w-fit rounded-2xl bg-#3333 p-2 pt-0">
+
+        <GlassCard
+            style="--glass-card-color: pink"
+            class="relative rounded-2xl mx-a mt-48 min-h-64 min-w-64 w-fit p-2 pt-0 "
+        >
             <div class="relative mx-a h-16 w-32">
-                <Avatar class="absolute! bottom-0 w-32" />
+                <GlassCard
+                    style="--glass-card-color: aqua"
+                    :glassBorderWidthPx="4"
+                    class="relative rounded-full mx-a mt-48 p-4px absolute! bottom-0 w-32"
+                >
+                    <div ref="avatar" >
+                            <Avatar />
+                    </div>
+                </GlassCard>
             </div>
 
-            <div>
+            <div class="pt-4">
                 <el-text
                     type="primary"
-                    class="mx-a block text-center font-bold text-4xl!"
+                    class="mx-a block text-center font-bold text-4xl! text-shadow-lg"
                 >
-                    Mercury Neko
-                    <br>
-                    9猫猫
+                    ⑨猫猫
                 </el-text>
             </div>
-        </BlurCard>
+        </GlassCard>
     </div>
 </template>
+
+<style scoped>
+.rotating {
+    animation: rotate 10s infinite linear reverse;
+}
+</style>
+
+<style>
+@property --glass-card-color {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: pink;
+}
+</style>
+

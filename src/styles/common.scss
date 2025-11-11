@@ -1,5 +1,13 @@
 @use 'normalize';
 
+html, body {
+  min-height: 100vh !important;
+  min-width: 100vw;
+  max-width: 100vw;
+  position: absolute;
+  top: 0
+}
+
 html.dark {
 }
 
