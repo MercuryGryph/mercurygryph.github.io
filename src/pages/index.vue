@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue'
-import BottomBar from '~/components/BottomBar.vue'
 import {OffsetZ} from '~/components/GlassCard'
 import {Probabilities, Urls} from '~/data/Constants'
 import {getDomIconElement} from '~/utils/utils'
@@ -16,9 +15,9 @@ getDomIconElement().href = Urls.Images.Avatar
 const avatar = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-    console.debug('onMounted @ index.vue')
+    console.debug('onMounted @ ~/pages/index.vue')
 
-    if (Probabilities.AvatarRotating.try() || true) {
+    if (Probabilities.AvatarRotating.try()) {
         console.info('roooooooootatinnnnnnnnng')
         avatar.value?.classList.add('rotating')
     }

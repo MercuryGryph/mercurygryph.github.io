@@ -33,6 +33,13 @@ class Probability {
     }
 }
 
+const probability = (
+    threshold: number,
+    range: number = 100,
+): Probability => {
+    return new Probability(threshold, range)
+}
+
 export const Probabilities = {
-    AvatarRotating: new Probability(5, 100)
+    AvatarRotating: probability(5, 100)
 }

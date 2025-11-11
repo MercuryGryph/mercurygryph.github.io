@@ -21,39 +21,46 @@ const props = withDefaults(defineProps<{
 
 const glassCardEffect = ref<HTMLElement | null>(null)
 
-const uuid = uuidv4()
-const id = `GlassCard-${uuid}`
+const initStyleProps = () => {
+    const cardEffect = glassCardEffect.value!!
+
+    if (props.color) {
+        cardEffect.style.setProperty('--glass-card-color', props.color)
+    }
+    cardEffect.parentElement?.style.setProperty('--glass-card-effect-size' , `${props.lightSizePx}px`)
+    cardEffect.parentElement?.style.setProperty('--glass-card-border-width', `${props.glassBorderWidthPx}px`)
+}
 
 let lastUpdateTime = Date.now()
 const minimalUpdateTime = computed(()=> {
     return 1000 / props.updatesPerSecond
 })
 
-onMounted(() => {
+const onMouseMove = (e: MouseEvent) => {
     const cardEffect = glassCardEffect.value!!
 
-    if (props.color) {
-        cardEffect.style.setProperty('--glass-card-color', props.color)
+    const time = Date.now()
+    if (time - lastUpdateTime < minimalUpdateTime.value) {
+        return
+    } else {
+        lastUpdateTime = time
     }
 
-    GlobalMouseEvent.OnMouseMove.register(id, (e: MouseEvent): void => {
-        const time = Date.now()
-        if (time - lastUpdateTime < minimalUpdateTime.value) {
-            return
-        } else {
-            lastUpdateTime = time
-        }
+    const rect = cardEffect.getBoundingClientRect()
+    const x = e.clientX - rect.left - props.lightSizePx / 2
+    const y = e.clientY - rect.top - props.lightSizePx / 2
+    const pos = props.offset(x, y, e, rect)
 
-        const rect = cardEffect.getBoundingClientRect()
-        const x = e.clientX - rect.left - props.lightSizePx / 2
-        const y = e.clientY - rect.top - props.lightSizePx / 2
-        const pos = props.offset(x, y, e, rect)
+    cardEffect.style.setProperty('--glass-card-effect-pos-x', `${pos.x}px`)
+    cardEffect.style.setProperty('--glass-card-effect-pos-y', `${pos.y}px`)
+}
 
-        cardEffect.style.setProperty('--glass-card-effect-pos-x', `${pos.x}px`)
-        cardEffect.style.setProperty('--glass-card-effect-pos-y', `${pos.y}px`)
-        cardEffect.style.setProperty('--glass-card-effect-size' , `${props.lightSizePx}px`)
-        cardEffect.style.setProperty('--glass-card-border-width', `${props.glassBorderWidthPx}px`)
-    })
+const uuid = uuidv4()
+const id = `GlassCard-${uuid}`
+
+onMounted(() => {
+    initStyleProps()
+    GlobalMouseEvent.OnMouseMove.register(id, onMouseMove)
 })
 
 onUnmounted(() => {
@@ -89,7 +96,10 @@ onUnmounted(() => {
 
     border-radius: inherit;
 
-    padding: var(--glass-card-border-width);
+    padding: var(--glass-card-border-top)
+             var(--glass-card-border-right)
+             var(--glass-card-border-bottom)
+             var(--glass-card-border-left);
 
     background-image: radial-gradient(white, var(--glass-card-color) 20%, transparent 60%);
     background-position: var(--glass-card-effect-pos-x) var(--glass-card-effect-pos-y);

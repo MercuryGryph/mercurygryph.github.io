@@ -4,7 +4,10 @@ import {Urls} from '~/data/Constants'
 
 <template>
 
-    <GlassCard class="fixed bottom-0 w-full flex justify-between p-2">
+    <GlassCard
+        color="aqua"
+        class="BottomBar fixed bottom-0 w-full flex justify-between p-2"
+    >
         <el-text type="info">
             © MercuryGryph🏳️‍⚧
             <br>
@@ -24,3 +27,10 @@ import {Urls} from '~/data/Constants'
     </GlassCard>
 
 </template>
+
+<style>
+.BottomBar {
+    --glass-card-border-horizonal: 0;
+    --glass-card-border-bottom: 0;
+}
+</style>
