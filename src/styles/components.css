@@ -20,6 +20,12 @@ html {
 
     --glass-card-effect-pos-x    : 0;
     --glass-card-effect-pos-y    : 0;
+
+    --glass-card-effect-opacity  : 0;
+}
+
+html:hover {
+    --glass-card-effect-opacity  : 1;
 }
 
 .GlassCard {
