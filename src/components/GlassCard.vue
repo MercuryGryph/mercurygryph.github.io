@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref, onMounted, onUnmounted, computed} from 'vue'
 import {v4 as uuidv4} from 'uuid'
-import {OffsetProvider} from '~/components/GlassCard'
+import {CursePos, PosProvider} from '~/components/GlassCard'
 import {GlobalMouseEvent} from '~/data/GlobalEvent'
 
 
@@ -9,13 +9,13 @@ const props = withDefaults(defineProps<{
     color?: string | null
     lightSizePx?: number
     glassBorderWidthPx?: number
-    offset?: OffsetProvider
+    posProvider?: PosProvider
     updatesPerSecond?: number
 }>(), {
     color: null,
     lightSizePx: 256,
     glassBorderWidthPx: 2,
-    offset: ((x: number, y: number) => { return {x, y} }) as OffsetProvider,
+    posProvider: CursePos(),
     updatesPerSecond: 60
 })
 
@@ -47,9 +47,8 @@ const onMouseMove = (e: MouseEvent) => {
     }
 
     const rect = cardEffect.getBoundingClientRect()
-    const x = e.clientX - rect.left - props.lightSizePx / 2
-    const y = e.clientY - rect.top - props.lightSizePx / 2
-    const pos = props.offset(x, y, e, rect)
+
+    const pos = props.posProvider(e, rect, props.lightSizePx)
 
     cardEffect.style.setProperty('--glass-card-effect-pos-x', `${pos.x}px`)
     cardEffect.style.setProperty('--glass-card-effect-pos-y', `${pos.y}px`)

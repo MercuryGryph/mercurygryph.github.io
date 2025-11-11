@@ -1,14 +1,27 @@
 export type Position = {x: number, y: number}
-export type OffsetProvider = (x: number, y: number, mouseEvent: MouseEvent, elementRect: DOMRect) => Position
 
-export const OffsetZ = (
+export const position = (x: number, y: number) => { return {x, y} as Position }
+
+export type PosProvider = (mouseEvent: MouseEvent, elementRect: DOMRect, lightSizePx: number) => Position
+
+export const CursePos = (): PosProvider => {
+    return (mouseEvent: MouseEvent, elementRect: DOMRect, lightSizePx: number): Position => {
+        const x = mouseEvent.clientX - elementRect.left - lightSizePx / 2
+        const y = mouseEvent.clientY - elementRect.top - lightSizePx / 2
+        return position(x, y)
+    }
+}
+
+export const ZOffset = (
     z : number,
-): OffsetProvider => {
-    return (x: number, y: number, mouseEvent: MouseEvent, elementRect: DOMRect): {x: number, y: number} => {
+): PosProvider => {
+    return (mouseEvent: MouseEvent, elementRect: DOMRect, lightSizePx: number): {x: number, y: number} => {
+        const cursePos = CursePos()(mouseEvent, elementRect, lightSizePx)
+
         const viewport = window.visualViewport
 
         if (!viewport) {
-            return {x, y}
+            return cursePos
         }
 
         const center = {
@@ -23,9 +36,9 @@ export const OffsetZ = (
 
         const zScale = z / 10
 
-        return {
-            x: x + d.x * zScale,
-            y: y + d.y * zScale,
-        }
+        return position(
+            cursePos.x + d.x * zScale,
+            cursePos.y + d.y * zScale
+        )
     }
 }
