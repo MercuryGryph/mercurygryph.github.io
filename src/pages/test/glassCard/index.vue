@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {OffsetZ} from '~/components/GlassCard';
+import {ZOffset} from '~/components/GlassCard';
 
 const props = defineProps<{
     class?: string
@@ -16,7 +16,7 @@ const props = defineProps<{
                 color="aqua"
                 :glassBorderWidthPx="2"
                 :lightSizePx="256 + 64"
-                :offset="OffsetZ(5)"
+                :posProvider="ZOffset(5)"
                 class="absolute top-50% left-50% translate--50%
                     w-150 h-80
                     rounded-2rem
@@ -26,7 +26,7 @@ const props = defineProps<{
                 color="lime"
                 :glassBorderWidthPx="2"
                 :lightSizePx="256"
-                :offset="OffsetZ(3)"
+                :posProvider="ZOffset(3)"
                 class="absolute top-[calc(50%-50px)] left-[calc(50%+128px)] translate--50%
                     w-60 h-150
                 "
@@ -35,7 +35,7 @@ const props = defineProps<{
                 color="pink"
                 :glassBorderWidthPx="2"
                 :lightSizePx="256 - 64"
-                :offset="OffsetZ(2)"
+                :posProvider="ZOffset(2)"
                 class="absolute top-[calc(50%+100px)] left-[calc(50%-10px)] translate--50%
                     w-100 h-100
                     rounded-full
