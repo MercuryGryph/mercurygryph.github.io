@@ -106,6 +106,9 @@ onUnmounted(() => {
     background-size: var(--glass-card-effect-size) var(--glass-card-effect-size);
     background-repeat: no-repeat;
 
+    opacity: var(--glass-card-effect-opacity);
+    transition: opacity 0.6s ease;
+
     mask: linear-gradient(#fff, #fff) content-box, linear-gradient(#fff, #fff);
     mask-composite: exclude;
 
@@ -124,6 +127,7 @@ onUnmounted(() => {
     background-size: var(--glass-card-effect-size) var(--glass-card-effect-size);
     background-repeat: no-repeat;
 
-    opacity: 0.6;
+    opacity: calc(0.6 * var(--glass-card-effect-opacity));
+    transition: opacity 0.6s ease;
 }
 </style>
