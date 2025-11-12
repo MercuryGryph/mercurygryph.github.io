@@ -1,64 +1,91 @@
 <script setup lang="ts">
-import {ref, onMounted, onUnmounted, computed} from 'vue'
 import {v4 as uuidv4} from 'uuid'
+import {onMounted, onUnmounted, ref} from 'vue'
 import {CursePos, PosProvider} from '~/components/GlassCard'
 import {GlobalMouseEvent} from '~/data/GlobalEvent'
+import {Vector, Vector2} from '~/utils/math/Vector'
+import {rectInfo} from '~/utils/RectInfo'
 
 
 const props = withDefaults(defineProps<{
-    color?: string | null
+    color?: string
     lightSizePx?: number
     glassBorderWidthPx?: number
     posProvider?: PosProvider
     updatesPerSecond?: number
 }>(), {
-    color: null,
     lightSizePx: 256,
     glassBorderWidthPx: 2,
     posProvider: CursePos(),
-    updatesPerSecond: 60
+    updatesPerSecond: 120
 })
 
 const glassCardEffect = ref<HTMLElement | null>(null)
+const anchorO = ref<HTMLElement | null>(null)
+const anchorX = ref<HTMLElement | null>(null)
+const anchorY = ref<HTMLElement | null>(null)
+const mousePos = Vector2.Zero()
+
+
+
+let lastUpdateTime = Date.now()
+let lastRanderTime = Date.now()
+const minimalUpdateTime = 1000 / props.updatesPerSecond
+
+let rotateDeg = 0
 
 const initStyleProps = () => {
     const cardEffect = glassCardEffect.value!!
+    const card = cardEffect.parentElement!! as HTMLElement
 
     if (props.color) {
         cardEffect.style.setProperty('--glass-card-color', props.color)
     }
-    cardEffect.parentElement?.style.setProperty('--glass-card-effect-size' , `${props.lightSizePx}px`)
-    cardEffect.parentElement?.style.setProperty('--glass-card-border-width', `${props.glassBorderWidthPx}px`)
+    card.style.setProperty('--glass-card-effect-size' , `${props.lightSizePx}px`)
+    card.style.setProperty('--glass-card-border-width', `${props.glassBorderWidthPx}px`)
+
+    rotateDeg = Number(window.getComputedStyle(card).getPropertyValue('--glass-card-rotate').replace('deg', ''))
 }
 
-let lastUpdateTime = Date.now()
-const minimalUpdateTime = computed(()=> {
-    return 1000 / props.updatesPerSecond
-})
-
 const onMouseMove = (e: MouseEvent) => {
-    const cardEffect = glassCardEffect.value!!
-
     const time = Date.now()
-    if (time - lastUpdateTime < minimalUpdateTime.value) {
+    if (time - lastUpdateTime < minimalUpdateTime) {
         return
     } else {
-        lastUpdateTime = time
+        lastUpdateTime = Date.now()
     }
 
-    const rect = cardEffect.getBoundingClientRect()
-
-    const pos = props.posProvider(e, rect, props.lightSizePx)
-
-    cardEffect.style.setProperty('--glass-card-effect-pos-x', `${pos.x}px`)
-    cardEffect.style.setProperty('--glass-card-effect-pos-y', `${pos.y}px`)
+    mousePos.x = e.clientX
+    mousePos.y = e.clientY
 }
 
 const uuid = uuidv4()
 const id = `GlassCard-${uuid}`
 
+const animationFrame = () => {
+    window.requestAnimationFrame(animationFrame)
+
+    const cardEffect = glassCardEffect.value!!
+
+    const pO = anchorO.value!!.getBoundingClientRect()
+    const pX = anchorX.value!!.getBoundingClientRect()
+    const pY = anchorY.value!!.getBoundingClientRect()
+
+    const rect = rectInfo(
+        Vector(pO.left, pO.top),
+        Vector(pX.left, pX.top),
+        Vector(pY.left, pY.top)
+    )
+
+    const pos = props.posProvider(mousePos, rect, props.lightSizePx, rotateDeg)
+
+    cardEffect.style.setProperty('--glass-card-effect-pos-x', `${pos.x}px`)
+    cardEffect.style.setProperty('--glass-card-effect-pos-y', `${pos.y}px`)
+}
+
 onMounted(() => {
     initStyleProps()
+    window.requestAnimationFrame(animationFrame)
     GlobalMouseEvent.OnMouseMove.register(id, onMouseMove)
 })
 
@@ -77,6 +104,10 @@ onUnmounted(() => {
              absolute w-100% h-100% translate--50% top-50% left-50%
              rounded-inherit of-hidden"
         >
+            <div ref="anchorO" class="absolute top-0    left-0  invisible w-0 h-0" />
+            <div ref="anchorX" class="absolute top-0    right-0 invisible w-0 h-0" />
+            <div ref="anchorY" class="absolute bottom-0 left-0  invisible w-0 h-0" />
+
             <div class="GlassCardEffect
                  z--1
                  absolute w-100% h-100% translate--50% top-50% left-50%
@@ -88,6 +119,10 @@ onUnmounted(() => {
 </template>
 
 <style>
+.GlassCard {
+    rotate: var(--glass-card-rotate);
+}
+
 .GlassCardBorder::before {
     content: '';
     position: absolute;
