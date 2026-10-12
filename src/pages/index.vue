@@ -29,6 +29,7 @@ const welcomeText = `Loading` + (`.`+`\r`.repeat(100)).repeat(6)
     + `\b`.repeat(13) + `\f${ascii_neko}
 
 Welcome!
+This system is 100% made by human!
 `
 
 const profileText = `Profile
@@ -36,6 +37,17 @@ const profileText = `Profile
 Name: MercuryGryph / MercuryNeko / 9Neko / 9猫猫 / 猫猫鹰
 Pronoun: she / her / 她 / &lt;Or any non derogatory pronoun&gt;
 
+Computer Science | Bachelor's degree
+Coding | UI Design | UX Design
+`
+
+const contactText = `Contact
+=======
+Email:      <a target="_blank" href="mailto:w84627303@gmail.com">w84627303@gmail.com</a>
+Github:     <a target="_blank" href="${Urls.Me.Github}">${Urls.Me.Github}</a>
+Bilibili:   <a target="_blank" href="${Urls.Me.Bilibili}">${Urls.Me.Bilibili}</a>
+Steam:      <a target="_blank" href="${Urls.Me.Steam}">${Urls.Me.Steam}</a>
+X:          <a target="_blank" href="${Urls.Me.X}">${Urls.Me.X}</a>
 `
 
 const text = ref<string>("")
@@ -48,32 +60,59 @@ function putNext() {
     replacing.value = false
     return
   }
+
   const char = newText[i]
   switch (char) {
     case ' ':
       text.value += '&nbsp;'
       break
+
+    case '<':
+      let cl: string
+      let res_l: string = ''
+      do {
+        cl = newText[i]
+        res_l += cl
+        i++
+      } while (cl != '>')
+      text.value += res_l
+      i--
+      break
+
+    case '&':
+      let c_a: string
+      let res_a: string = ''
+      do {
+        c_a = newText[i]
+        res_a += c_a
+        i++
+      } while (c_a != ';')
+      text.value += res_a
+      i--
+      break
+
     case '\n':
       text.value += '<br/>'
       break
+
     case '\r':
       break
+
     case '\f':
       text.value = ''
       break
+
     case '\b':
       const length = text.value.length
       text.value = text.value.substring(0, length-1)
       break
+
     default:
       text.value += char
       break
   }
   i++
 }
-
-let lastTime = new Date().getTime()
-const delay = 1
 
 function putTextAnimation() {
   // const now = new Date().getTime()
@@ -135,7 +174,7 @@ onMounted(() => {
           <Br/>
           档案
         </Button>
-        <Button>
+        <Button :onClick="()=>{switchText(contactText)}">
           Contact
           <br/>
           联系
@@ -266,6 +305,11 @@ onMounted(() => {
       0 0 8px #ffffff,
       0 0 16px #305847,
       0 0 32px #305847;
+  a {
+    color: #8bcfa2;
+    text-decoration: underline;
+    font-style: italic;
+  }
 }
 
 ::selection {
@@ -299,11 +343,13 @@ onMounted(() => {
 
 .cassette-panel-controller {
   position: relative;
-  display: flex;
   flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-evenly;
   min-width: var(--panel-min-x);
-  min-height: var(--panel-min-y);
-  margin: 64px auto;
+  margin: 16px 32px 0;
   padding: 12px;
 }
 </style>
