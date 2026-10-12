@@ -6,6 +6,7 @@ export const Urls = {
         BingDailyWallpaper: 'https://dailybing.com/api/v1',
     },
     Me: {
+        Email: 'w84627302@gmail.com',
         Bilibili: 'https://space.bilibili.com/27604602',
         Github: 'https://github.com/MercuryGryph',
         Steam: 'https://steamcommunity.com/id/9MercuryNeko/',

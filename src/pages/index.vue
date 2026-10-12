@@ -43,7 +43,7 @@ Coding | UI Design | UX Design
 
 const contactText = `Contact
 =======
-Email:      <a target="_blank" href="mailto:w84627303@gmail.com">w84627303@gmail.com</a>
+Email:      <a target="_blank" href="mailto:${Urls.Me.Email}">${Urls.Me.Email}</a>
 Github:     <a target="_blank" href="${Urls.Me.Github}">${Urls.Me.Github}</a>
 Bilibili:   <a target="_blank" href="${Urls.Me.Bilibili}">${Urls.Me.Bilibili}</a>
 Steam:      <a target="_blank" href="${Urls.Me.Steam}">${Urls.Me.Steam}</a>
